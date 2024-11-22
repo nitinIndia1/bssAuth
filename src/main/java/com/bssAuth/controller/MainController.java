@@ -57,7 +57,7 @@ public class MainController {
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	
 	@GetMapping(value="api/rating/profile/get/all/{type}")
-	public ResponseEntity<?> api_rating_profile_get_all(@PathVariable(value="type")String type){
+	public ResponseEntity<?> api_rating_profile_get_all(@PathVariable(name="type")String type){
 
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
@@ -322,7 +322,7 @@ public class MainController {
 	}
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*///6749991025 ok, 6749991027 not in crm
 	@GetMapping(value="api/customerbymsisdn/{msisdn}")
-	public ResponseEntity<?> api_customerbymsisdn(@PathVariable(value="msisdn")String msisdn){
+	public ResponseEntity<?> api_customerbymsisdn(@PathVariable(name="msisdn")String msisdn){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -402,7 +402,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/set/monthly/amount/msisdn/{msisdn}/amount/{amount}")
-	public ResponseEntity<?> pushToAbmf(@PathVariable(value="msisdn")String msisdn,@PathVariable(value="amount")String amount){
+	public ResponseEntity<?> pushToAbmf(@PathVariable(name="msisdn")String msisdn,@PathVariable(name="amount")String amount){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -482,7 +482,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/invoice/msisdn/{msisdn}")
-	public ResponseEntity<?> invoice(@PathVariable(value="msisdn")String msisdn){
+	public ResponseEntity<?> invoice(@PathVariable(name="msisdn")String msisdn){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -566,7 +566,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/bill/{msisdn}")
-	public ResponseEntity<?> generateInvoice1(@PathVariable(value="msisdn")String msisdn){
+	public ResponseEntity<?> generateInvoice1(@PathVariable(name="msisdn")String msisdn){
 
 		//String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -736,7 +736,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@PostMapping(value="api/savepayment/currency/1/paymentrsult/{msisdn}")
-	public ResponseEntity<?> paymentForPlan(@RequestBody JSONObject json,@PathVariable(value="msisdn",required = true)String msisdn){
+	public ResponseEntity<?> paymentForPlan(@RequestBody JSONObject json,@PathVariable(name="msisdn",required = true)String msisdn){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -815,7 +815,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/postpaid/bill/payment/invoice/{invoiceNumber}/amount/{amount}/currency/1/paymentrsult/1/paymentmethod/1/partnerid/{partnerId}/transactionid/{transactionId}")
-	public ResponseEntity<?> postpaidbillpayment(@PathVariable(value="invoiceNumber")String invoiceNumber,@PathVariable(value="amount")String amount,@PathVariable(value="partnerId")String partnerId,@PathVariable(value="transactionId")String transactionId){
+	public ResponseEntity<?> postpaidbillpayment(@PathVariable(name="invoiceNumber")String invoiceNumber,@PathVariable(name="amount")String amount,@PathVariable(name="partnerId")String partnerId,@PathVariable(name="transactionId")String transactionId){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -1224,7 +1224,7 @@ public class MainController {
 	}
 
 	//	@GetMapping(value="api/save/cart/token/{token}/device/{device}")
-	//	public ResponseEntity<?> save_cart_token(@PathVariable(value="token")String token,@PathVariable(value="device")String device){
+	//	public ResponseEntity<?> save_cart_token(@PathVariable(name="token")String token,@PathVariable(name="device")String device){
 	//	
 	//		String accessToken = getCrmAccessToken();
 	//		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -1273,7 +1273,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/carts/token/{token}")
-	public ResponseEntity<?> carts_token(@PathVariable(value="token")String token){
+	public ResponseEntity<?> carts_token(@PathVariable(name="token")String token){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -1356,7 +1356,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/save/order/token/{token}")
-	public ResponseEntity<?> save_order_token(@PathVariable(value="token")String token){
+	public ResponseEntity<?> save_order_token(@PathVariable(name="token")String token){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -1440,7 +1440,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@DeleteMapping(value="api/cart/id/{id}")
-	public ResponseEntity<?> delete_cart_id(@PathVariable(value="id")String id){
+	public ResponseEntity<?> delete_cart_id(@PathVariable(name="id")String id){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -1524,7 +1524,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/invoice/order/{order}")
-	public ResponseEntity<?> invoice_order(@PathVariable(value="order")String order){
+	public ResponseEntity<?> invoice_order(@PathVariable(name="order")String order){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -2273,7 +2273,7 @@ public class MainController {
 
 	/*@CrossOrigin(origins = "*", allowedHeaders = "*")*/
 	@GetMapping(value="api/assigned/sim/partner/{partner}")
-	public ResponseEntity<?> api_assigned_sim_partner(@PathVariable(value="partner")String partner){
+	public ResponseEntity<?> api_assigned_sim_partner(@PathVariable(name="partner")String partner){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -3381,15 +3381,15 @@ public class MainController {
 	
 	@GetMapping(value="api/{connectionType}/bill/payment/invoiceNumber/{invoiceNumber}/amount/"
 			+ "{amount}/currency/{currency}/paymentrsult/{paymentrsult}/paymentmethod/{paymentmethod}")
-	public ResponseEntity<?> somelongrequest(@PathVariable(value="connectionType")String connectionType,
-			@PathVariable(value="invoiceNumber")String invoiceNumber,
-			@PathVariable(value="amount")String amount,
-			@PathVariable(value="currency")String currency,
-			@PathVariable(value="paymentrsult")String paymentrsult,
-			@PathVariable(value="paymentmethod")String paymentmethod,
-			@RequestParam(value = "creditCard")String creditCard,
-			@RequestParam(value = "partner")String partner,
-			@RequestParam(value = "transactionId")String transactionId
+	public ResponseEntity<?> somelongrequest(@PathVariable(name="connectionType")String connectionType,
+			@PathVariable(name="invoiceNumber")String invoiceNumber,
+			@PathVariable(name="amount")String amount,
+			@PathVariable(name="currency")String currency,
+			@PathVariable(name="paymentrsult")String paymentrsult,
+			@PathVariable(name="paymentmethod")String paymentmethod,
+			@RequestParam(name = "creditCard")String creditCard,
+			@RequestParam(name = "partner")String partner,
+			@RequestParam(name = "transactionId")String transactionId
 			){
 
 		String accessToken = getCrmAccessToken();
@@ -3475,7 +3475,7 @@ public class MainController {
 
 //	@GetMapping(value="api/plan/allocation/assigned/postpaid/customer/{msisdn}")
 //	public ResponseEntity<?> apiplanallocationassignedpostpaidcustomer(
-//			@PathVariable(value="msisdn")String msisdn
+//			@PathVariable(name="msisdn")String msisdn
 //			){
 //
 //		//String accessToken = getCrmAccessToken();
@@ -3557,7 +3557,7 @@ public class MainController {
 
 	@GetMapping(value="api/plan/allocation/assigned/prepaid/customer/{msisdn}")
 	public ResponseEntity<?> apiplanallocationassignedprepaidcustomer(
-			@PathVariable(value="msisdn")String msisdn
+			@PathVariable(name="msisdn")String msisdn
 			){
 
 		//String accessToken = getCrmAccessToken();
@@ -3636,95 +3636,10 @@ public class MainController {
 
 		}
 	}
-	//http://172.17.1.20:9090/api/sim/activate/code/121/text/ACT/msisdn/
-	@PostMapping(value="api/sim/activate/code/{code}/")
-	public void somemethod(){
-
-		String accessToken = getCrmAccessToken();
-		//System.out.println("ACCESS TOKEN : "+accessToken);
-		//http://172.5.10.2:9090/api/sim/activate/code/%7BshortCode%7D/text/%7Btext%7D/msisdn/%7Bmsisdn%7D%27
-		
-		String text = "text text text";
-		String shortCode = "121";
-		String msisdn = "9088723";
-		
-		String url = "http://172.5.10.2:9090/api/sim/activate/code/"+shortCode+"/text/"+text+"/msisdn/"+msisdn;
-		
-		System.out.println("## "+url);
-		
-		
-		
-		RestTemplate restTemplate = new RestTemplate();
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
-		headers.add("Authorization", "Bearer "+accessToken);
-		ResponseEntity<String> response = null;
-		HttpEntity formEntity = new HttpEntity(null, headers);
-		try {
-			response = restTemplate.exchange(url, HttpMethod.POST,
-					formEntity, String.class);
-
-			if(response!=null && response.getStatusCode().is2xxSuccessful()) {
-				String actualResponse = response.getBody();
-				JSONParser parser =new JSONParser();
-				JSONObject obj=null;
-				try {
-					obj = (JSONObject) parser.parse(actualResponse);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				System.out.println(obj.toJSONString());
-			}
-			else if(response!=null && !response.getStatusCode().is2xxSuccessful()){
-				System.out.println(response);
-			}
-			else
-			{
-				System.out.println("error");
-			}
-		}
-		//			catch(HttpClientErrorException ex) {
-		//			ex.printStackTrace();
-		//			String lMsg = ex.getLocalizedMessage();
-		//			//String msg = ex.getMessage();
-		////			JSONParser parser =new JSONParser();
-		////			JSONObject obj = null;
-		////			try {
-		////			obj = (JSONObject)parser.parse(lMsg);
-		////		}catch(Exception ex_) {
-		////			ex_.printStackTrace();
-		////		}
-		//			System.out.println("exception check check check check check ");
-		//			
-		//			long l_end_time = System.currentTimeMillis();
-		//			long l_diff = l_end_time-l_time_start;
-		//			return	new ResponseEntity<CoreResponseHandler>(new SuccessResponseBeanRefined(response.getStatusCode(), ResponseStatusEnum.FAILED, ApplicationResponse.Failed,lMsg,l_diff+" ms"),response.getStatusCode());				
-		//
-		//		}
-
-
-		catch(HttpClientErrorException ex) {
-			System.out.println("herehherehehrhehehrehrherhe");
-			ex.printStackTrace();
-			String msg = ex.getResponseBodyAsString();
-
-			JSONParser parser =new JSONParser();
-			JSONObject obj = null;
-			try {
-				obj = (JSONObject)parser.parse(msg);
-				System.out.println(obj.toJSONString());
-			}catch(Exception ex_) {
-				ex_.printStackTrace();
-
-			}
-	
-		}
-	}
 //http://172.17.1.20:9090/api/map/parent_number/6741234571/child_number/6749991025%27
 	@GetMapping(value="api/map/parent_number/{parent}/child_number/{child}")
-	public ResponseEntity<?> apimapparentnumberchildnumber(@PathVariable(value="parent")String parent,
-			@PathVariable(value="child")String child){
+	public ResponseEntity<?> apimapparentnumberchildnumber(@PathVariable(name="parent")String parent,
+			@PathVariable(name="child")String child){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -3803,7 +3718,7 @@ public class MainController {
 	}
 //http://172.17.1.20:9090/api/child_account_of_parent/6741234571
 	@GetMapping(value="api/child_account_of_parent/{parent}")
-	public ResponseEntity<?> apimapparentnumber(@PathVariable(value="parent")String parent){
+	public ResponseEntity<?> apimapparentnumber(@PathVariable(name="parent")String parent){
 
 		String accessToken = getCrmAccessToken();
 		//System.out.println("ACCESS TOKEN : "+accessToken);
@@ -3816,7 +3731,7 @@ public class MainController {
 		ResponseEntity<String> response = null;
 		HttpEntity formEntity = new HttpEntity(null, headers);
 		try {
-			response = restTemplate.exchange("http://172.17.1.20:9090/api/child_account_of_parent/"+parent, HttpMethod.PUT,
+			response = restTemplate.exchange("http://172.17.1.20:9090/api/child_account_of_parent/"+parent, HttpMethod.GET,
 					formEntity, String.class);
 
 			if(response!=null && response.getStatusCode().is2xxSuccessful()) {
@@ -3880,5 +3795,246 @@ public class MainController {
 
 		}
 	}
+	//http://172.17.1.20:9090/api/routers
+		@GetMapping(value="api/routers")
+		public ResponseEntity<?> apirouters(){
+
+			String accessToken = getCrmAccessToken();
+			//System.out.println("ACCESS TOKEN : "+accessToken);
+
+			RestTemplate restTemplate = new RestTemplate();
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+			headers.add("Authorization", "Bearer "+accessToken);
+			ResponseEntity<String> response = null;
+			HttpEntity formEntity = new HttpEntity(null, headers);
+			try {
+				response = restTemplate.exchange("http://172.17.1.20:9090/api/routers", HttpMethod.GET,
+						formEntity, String.class);
+
+				if(response!=null && response.getStatusCode().is2xxSuccessful()) {
+					String actualResponse = response.getBody();
+					JSONParser parser =new JSONParser();
+					JSONArray obj=null;
+					try {
+						obj = (JSONArray) parser.parse(actualResponse);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					return new ResponseEntity<>(obj, HttpStatus.OK);
+				}
+				else if(response!=null && !response.getStatusCode().is2xxSuccessful()){
+					System.out.println("1");
+					return new ResponseEntity<>(response, response.getStatusCode());
+				}
+				else
+				{
+					System.out.println("2");
+					return new ResponseEntity<>("ERROR", response.getStatusCode());
+
+				}
+			}
+			//			catch(HttpClientErrorException ex) {
+			//			ex.printStackTrace();
+			//			String lMsg = ex.getLocalizedMessage();
+			//			//String msg = ex.getMessage();
+			////			JSONParser parser =new JSONParser();
+			////			JSONObject obj = null;
+			////			try {
+			////			obj = (JSONObject)parser.parse(lMsg);
+			////		}catch(Exception ex_) {
+			////			ex_.printStackTrace();
+			////		}
+			//			System.out.println("exception check check check check check ");
+			//			
+			//			long l_end_time = System.currentTimeMillis();
+			//			long l_diff = l_end_time-l_time_start;
+			//			return	new ResponseEntity<CoreResponseHandler>(new SuccessResponseBeanRefined(response.getStatusCode(), ResponseStatusEnum.FAILED, ApplicationResponse.Failed,lMsg,l_diff+" ms"),response.getStatusCode());				
+			//
+			//		}
+
+
+			catch(HttpClientErrorException ex) {
+				System.out.println("herehherehehrhehehrehrherhe");
+				ex.printStackTrace();
+				String msg = ex.getResponseBodyAsString();
+
+				JSONParser parser =new JSONParser();
+				JSONObject obj = null;
+				try {
+					obj = (JSONObject)parser.parse(msg);
+
+				}catch(Exception ex_) {
+					ex_.printStackTrace();
+					return new ResponseEntity<>(obj , HttpStatus.INTERNAL_SERVER_ERROR);
+
+				}
+				return new ResponseEntity<>(obj , ex.getStatusCode());
+
+			}
+		}
+		
+		//http://172.17.1.19:9898/api/processMinimalKYC/{type}
+		@PostMapping(value="api/processMinimalKYC/{type}")
+		public ResponseEntity<?> ekyc_processMinimalKYC(@PathVariable(name = "type",required = true)String type,@RequestBody JSONObject json){
+
+			//String accessToken = getCrmAccessToken();
+			//System.out.println("ACCESS TOKEN : "+accessToken);
+
+			RestTemplate restTemplate = new RestTemplate();
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+			//headers.add("Authorization", "Bearer "+accessToken);
+			ResponseEntity<String> response = null;
+			HttpEntity formEntity = new HttpEntity(json, headers);
+			try {
+				String url = "http://172.17.1.19:9898/api/processMinimalKYC/"+type;
+				System.out.println(url);
+				response = restTemplate.exchange(url , HttpMethod.POST,
+						formEntity, String.class);
+
+				if(response!=null && response.getStatusCode().is2xxSuccessful()) {
+					String actualResponse = response.getBody();
+					JSONParser parser =new JSONParser();
+					JSONObject obj=null;
+					try {
+						obj = (JSONObject) parser.parse(actualResponse);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					return new ResponseEntity<>(obj, HttpStatus.OK);
+				}
+				else if(response!=null && !response.getStatusCode().is2xxSuccessful()){
+					System.out.println("1");
+					return new ResponseEntity<>(response, response.getStatusCode());
+				}
+				else
+				{
+					System.out.println("2");
+					return new ResponseEntity<>("ERROR", response.getStatusCode());
+
+				}
+			}
+			//			catch(HttpClientErrorException ex) {
+			//			ex.printStackTrace();
+			//			String lMsg = ex.getLocalizedMessage();
+			//			//String msg = ex.getMessage();
+			////			JSONParser parser =new JSONParser();
+			////			JSONObject obj = null;
+			////			try {
+			////			obj = (JSONObject)parser.parse(lMsg);
+			////		}catch(Exception ex_) {
+			////			ex_.printStackTrace();
+			////		}
+			//			System.out.println("exception check check check check check ");
+			//			
+			//			long l_end_time = System.currentTimeMillis();
+			//			long l_diff = l_end_time-l_time_start;
+			//			return	new ResponseEntity<CoreResponseHandler>(new SuccessResponseBeanRefined(response.getStatusCode(), ResponseStatusEnum.FAILED, ApplicationResponse.Failed,lMsg,l_diff+" ms"),response.getStatusCode());				
+			//
+			//		}
+
+
+			catch(HttpClientErrorException ex) {
+				System.out.println("herehherehehrhehehrehrherhe");
+				ex.printStackTrace();
+				String msg = ex.getResponseBodyAsString();
+
+				JSONParser parser =new JSONParser();
+				JSONObject obj = null;
+				try {
+					obj = (JSONObject)parser.parse(msg);
+
+				}catch(Exception ex_) {
+					ex_.printStackTrace();
+					return new ResponseEntity<>(obj , HttpStatus.INTERNAL_SERVER_ERROR);
+
+				}
+				return new ResponseEntity<>(obj , ex.getStatusCode());
+
+			}
+		}
+		//http://localhost:9090/api/save/cart/token/12345676?partner=24&device=1&router=2%27
+		@PostMapping(value="api/save/cart/token/{token}")
+		public ResponseEntity<?> apisavecarttoken(@RequestBody JSONObject json,@PathVariable(name="token",required = true)String token,@RequestParam(name = "partner")String partner,
+				@RequestParam(name = "device")String device,
+				@RequestParam(name = "router")String router){
+
+			String accessToken = getCrmAccessToken();
+			//System.out.println("ACCESS TOKEN : "+accessToken);
+
+			RestTemplate restTemplate = new RestTemplate();
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+			headers.add("Authorization", "Bearer "+accessToken);
+			ResponseEntity<String> response = null;
+			HttpEntity formEntity = new HttpEntity(json, headers);
+			try {
+				response = restTemplate.exchange("http://localhost:9090/api/save/cart/token/"+token+"?partner="+partner+"&device="+device+"&router="+router, HttpMethod.POST,
+						formEntity, String.class);
+
+				if(response!=null && response.getStatusCode().is2xxSuccessful()) {
+					String actualResponse = response.getBody();
+					JSONParser parser =new JSONParser();
+					JSONObject obj=null;
+					try {
+						obj = (JSONObject) parser.parse(actualResponse);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					return new ResponseEntity<>(obj, HttpStatus.OK);
+				}
+				else if(response!=null && !response.getStatusCode().is2xxSuccessful()){
+					System.out.println("1");
+					return new ResponseEntity<>(response, response.getStatusCode());
+				}
+				else
+				{
+					System.out.println("2");
+					return new ResponseEntity<>("ERROR", response.getStatusCode());
+
+				}
+			}
+			//			catch(HttpClientErrorException ex) {
+			//			ex.printStackTrace();
+			//			String lMsg = ex.getLocalizedMessage();
+			//			//String msg = ex.getMessage();
+			////			JSONParser parser =new JSONParser();
+			////			JSONObject obj = null;
+			////			try {
+			////			obj = (JSONObject)parser.parse(lMsg);
+			////		}catch(Exception ex_) {
+			////			ex_.printStackTrace();
+			////		}
+			//			System.out.println("exception check check check check check ");
+			//			
+			//			long l_end_time = System.currentTimeMillis();
+			//			long l_diff = l_end_time-l_time_start;
+			//			return	new ResponseEntity<CoreResponseHandler>(new SuccessResponseBeanRefined(response.getStatusCode(), ResponseStatusEnum.FAILED, ApplicationResponse.Failed,lMsg,l_diff+" ms"),response.getStatusCode());				
+			//
+			//		}
+
+			catch(HttpClientErrorException ex) {
+				System.out.println("herehherehehrhehehrehrherhe");
+				ex.printStackTrace();
+				String msg = ex.getResponseBodyAsString();
+
+				JSONParser parser =new JSONParser();
+				JSONObject obj = null;
+				try {
+					obj = (JSONObject)parser.parse(msg);
+
+				}catch(Exception ex_) {
+					ex_.printStackTrace();
+					return new ResponseEntity<>(obj , HttpStatus.INTERNAL_SERVER_ERROR);
+
+				}
+				return new ResponseEntity<>(obj , ex.getStatusCode());
+
+			}
+		}
 }
 
