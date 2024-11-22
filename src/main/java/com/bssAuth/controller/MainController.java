@@ -3721,6 +3721,164 @@ public class MainController {
 	
 		}
 	}
+//http://172.17.1.20:9090/api/map/parent_number/6741234571/child_number/6749991025%27
+	@GetMapping(value="api/map/parent_number/{parent}/child_number/{child}")
+	public ResponseEntity<?> apimapparentnumberchildnumber(@PathVariable(value="parent")String parent,
+			@PathVariable(value="child")String child){
 
+		String accessToken = getCrmAccessToken();
+		//System.out.println("ACCESS TOKEN : "+accessToken);
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+		headers.add("Authorization", "Bearer "+accessToken);
+		ResponseEntity<String> response = null;
+		HttpEntity formEntity = new HttpEntity(null, headers);
+		try {
+			response = restTemplate.exchange("http://172.17.1.20:9090/api/map/parent_number/"+parent+"/child_number/"+child, HttpMethod.PUT,
+					formEntity, String.class);
+
+			if(response!=null && response.getStatusCode().is2xxSuccessful()) {
+				String actualResponse = response.getBody();
+				JSONParser parser =new JSONParser();
+				JSONObject obj=null;
+				try {
+					obj = (JSONObject) parser.parse(actualResponse);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				return new ResponseEntity<>(obj, HttpStatus.OK);
+			}
+			else if(response!=null && !response.getStatusCode().is2xxSuccessful()){
+				System.out.println("1");
+				return new ResponseEntity<>(response, response.getStatusCode());
+			}
+			else
+			{
+				System.out.println("2");
+				return new ResponseEntity<>("ERROR", response.getStatusCode());
+
+			}
+		}
+		//			catch(HttpClientErrorException ex) {
+		//			ex.printStackTrace();
+		//			String lMsg = ex.getLocalizedMessage();
+		//			//String msg = ex.getMessage();
+		////			JSONParser parser =new JSONParser();
+		////			JSONObject obj = null;
+		////			try {
+		////			obj = (JSONObject)parser.parse(lMsg);
+		////		}catch(Exception ex_) {
+		////			ex_.printStackTrace();
+		////		}
+		//			System.out.println("exception check check check check check ");
+		//			
+		//			long l_end_time = System.currentTimeMillis();
+		//			long l_diff = l_end_time-l_time_start;
+		//			return	new ResponseEntity<CoreResponseHandler>(new SuccessResponseBeanRefined(response.getStatusCode(), ResponseStatusEnum.FAILED, ApplicationResponse.Failed,lMsg,l_diff+" ms"),response.getStatusCode());				
+		//
+		//		}
+
+
+		catch(HttpClientErrorException ex) {
+			System.out.println("herehherehehrhehehrehrherhe");
+			ex.printStackTrace();
+			String msg = ex.getResponseBodyAsString();
+
+			JSONParser parser =new JSONParser();
+			JSONObject obj = null;
+			try {
+				obj = (JSONObject)parser.parse(msg);
+
+			}catch(Exception ex_) {
+				ex_.printStackTrace();
+				return new ResponseEntity<>(obj , HttpStatus.INTERNAL_SERVER_ERROR);
+
+			}
+			return new ResponseEntity<>(obj , ex.getStatusCode());
+
+		}
+	}
+//http://172.17.1.20:9090/api/child_account_of_parent/6741234571
+	@GetMapping(value="api/child_account_of_parent/{parent}")
+	public ResponseEntity<?> apimapparentnumber(@PathVariable(value="parent")String parent){
+
+		String accessToken = getCrmAccessToken();
+		//System.out.println("ACCESS TOKEN : "+accessToken);
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+		headers.add("Authorization", "Bearer "+accessToken);
+		ResponseEntity<String> response = null;
+		HttpEntity formEntity = new HttpEntity(null, headers);
+		try {
+			response = restTemplate.exchange("http://172.17.1.20:9090/api/child_account_of_parent/"+parent, HttpMethod.PUT,
+					formEntity, String.class);
+
+			if(response!=null && response.getStatusCode().is2xxSuccessful()) {
+				String actualResponse = response.getBody();
+				JSONParser parser =new JSONParser();
+				JSONObject obj=null;
+				try {
+					obj = (JSONObject) parser.parse(actualResponse);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				return new ResponseEntity<>(obj, HttpStatus.OK);
+			}
+			else if(response!=null && !response.getStatusCode().is2xxSuccessful()){
+				System.out.println("1");
+				return new ResponseEntity<>(response, response.getStatusCode());
+			}
+			else
+			{
+				System.out.println("2");
+				return new ResponseEntity<>("ERROR", response.getStatusCode());
+
+			}
+		}
+		//			catch(HttpClientErrorException ex) {
+		//			ex.printStackTrace();
+		//			String lMsg = ex.getLocalizedMessage();
+		//			//String msg = ex.getMessage();
+		////			JSONParser parser =new JSONParser();
+		////			JSONObject obj = null;
+		////			try {
+		////			obj = (JSONObject)parser.parse(lMsg);
+		////		}catch(Exception ex_) {
+		////			ex_.printStackTrace();
+		////		}
+		//			System.out.println("exception check check check check check ");
+		//			
+		//			long l_end_time = System.currentTimeMillis();
+		//			long l_diff = l_end_time-l_time_start;
+		//			return	new ResponseEntity<CoreResponseHandler>(new SuccessResponseBeanRefined(response.getStatusCode(), ResponseStatusEnum.FAILED, ApplicationResponse.Failed,lMsg,l_diff+" ms"),response.getStatusCode());				
+		//
+		//		}
+
+
+		catch(HttpClientErrorException ex) {
+			System.out.println("herehherehehrhehehrehrherhe");
+			ex.printStackTrace();
+			String msg = ex.getResponseBodyAsString();
+
+			JSONParser parser =new JSONParser();
+			JSONObject obj = null;
+			try {
+				obj = (JSONObject)parser.parse(msg);
+
+			}catch(Exception ex_) {
+				ex_.printStackTrace();
+				return new ResponseEntity<>(obj , HttpStatus.INTERNAL_SERVER_ERROR);
+
+			}
+			return new ResponseEntity<>(obj , ex.getStatusCode());
+
+		}
+	}
 }
 
