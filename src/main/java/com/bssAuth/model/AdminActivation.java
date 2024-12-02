@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AdminActivation implements Serializable{
 
-	private static final long serialVersionUID = -1063681769561911527L;
+	private static final long serialVersionUID = -1062681769561911527L;
 
 
 	@Id
